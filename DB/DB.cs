@@ -49,7 +49,7 @@ namespace DBConnect
             return result;
         }
 
-        public AuthorModel GetAuthor(string name)
+        public Author GetAuthor(string name)
         {
             var sql = $"select * from tab_author where author_name = '{name}';";
             var result = SelectQuery(sql);
@@ -57,11 +57,11 @@ namespace DBConnect
 
             var id = result.GetInt32("id");
             var authorName = result.GetString("author_name");
-            var birthDate = result.GetString("birth_date");
-            var deathDate = result.GetString("death_date");
+            var birthDate = result.GetDateTime("birth_date");
+            var deathDate = result.GetDateTime("death_date");
             var birthCountry = result.GetString("birth_country");
 
-            AuthorModel author = new AuthorModel(id, authorName, birthDate, deathDate, birthCountry);
+            Author author = new Author(id, authorName, birthDate, deathDate, birthCountry);
 
             return author;
         }
@@ -75,7 +75,7 @@ namespace DBConnect
             var id = result.GetInt32("id");
             var exhibitsName = result.GetString("exhibits_name");
             var idAuthor = result.GetInt32("id_author");
-            var creationDate = result.GetString("creation_date");
+            var creationDate = result.GetDateTime("creation_date");
             var artDirection = result.GetString("art_direction");
             var artForm = result.GetString("art_form");
             var materials = result.GetString("materials");
@@ -95,7 +95,7 @@ namespace DBConnect
             var id = result.GetInt32("id");
             var idExhibits = result.GetInt32("id_exhibits");
             var idStorage = result.GetInt32("id_storage");
-            var specialConditions = result.GetString("special_conditions");
+            var specialConditions = result.GetBoolean("special_conditions");
 
 
             SpaceStorageModel spaceStorage = new SpaceStorageModel(id, idExhibits, idStorage, specialConditions);
@@ -110,12 +110,11 @@ namespace DBConnect
             result.Read();
 
             var id = result.GetInt32("id");
-            var storageName = result.GetInt32("storage_name");
+            var storageName = result.GetString("storage_name");
 
-            SpaceStorageModel storage = new SpaceStorageModel(id, storageName);
+            StorageModel storage = new StorageModel(id, storageName);
 
             return storage;
         }
     }
 }
-

@@ -2,7 +2,7 @@
 
 namespace DataModel
 {
-    public class AuthorModel
+    public class Author
     {
         public int Id { get; set; }
         public string AuthorName { get; set; }
@@ -10,7 +10,7 @@ namespace DataModel
         public DateTime DeathDate { get; set; }
         public string BirthCountry { get; set; }
 
-        public AuthorModel(int id, string authorName, DateTime birthDate, DateTime deathDate, string birthCountry)
+        public Author(int id, string authorName, DateTime birthDate, DateTime deathDate, string birthCountry)
         {
             Id = id;
             AuthorName=authorName;
@@ -18,6 +18,6 @@ namespace DataModel
             DeathDate = deathDate;
             BirthCountry = birthCountry;
         }
-        public AuthorModel() { }
+        public Author() { }
     }
 }
