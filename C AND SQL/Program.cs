@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Museum
+namespace C_AND_SQL
 {
     class Program
     {

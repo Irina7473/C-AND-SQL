@@ -1,4 +1,5 @@
 ﻿
+
 namespace DataModel
 {
     public class SpaceStorageModel

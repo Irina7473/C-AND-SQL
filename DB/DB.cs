@@ -59,7 +59,7 @@ namespace DBConnect
             var authorName = result.GetString("author_name");
             var birthDate = result.GetString("birth_date");
             var deathDate = result.GetString("death_date");
-            var birthCountry=result.GetString("birth_country")
+            var birthCountry = result.GetString("birth_country");
 
             AuthorModel author = new AuthorModel(id, authorName, birthDate, deathDate, birthCountry);
 
