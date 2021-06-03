@@ -42,6 +42,7 @@ namespace Museum
                     "1" => 1,
                     "2" => 2,
                     "3" => 3,
+                    "4" => 4,
                     "0" => 0,
                     _ => InputKey()
                 };
@@ -71,12 +72,12 @@ namespace Museum
                 db.Open();
 
                 var exhibits = db.GetExhibits("Поцелуй");
-            Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.WriteLine($"id - {exhibits.Id}");
-                Console.WriteLine($"name - {exhibits.ExhibitsName}");
+                Console.WriteLine($"exhibits_name - {exhibits.ExhibitsName}");
                 Console.WriteLine($"id_author - {exhibits.IdAuthor}");
                 Console.WriteLine($"creation_date - {exhibits.CreationDate}");
-                Console.WriteLine($" art_direction - {exhibits.ArtDirection}");
+                Console.WriteLine($"art_direction - {exhibits.ArtDirection}");
                 Console.WriteLine($"art_form - {exhibits.ArtForm}");
                 Console.WriteLine($"materials - {exhibits.Materials}");
                 Console.WriteLine();
@@ -105,12 +106,12 @@ namespace Museum
             var db = new DB();
             db.Open();
 
-            var spaceStorage = db.GetSpaceStorage(6);
+            var spaceStorage = db.GetSpaceStorage(9);
             Console.ForegroundColor = ConsoleColor.DarkRed;
             Console.WriteLine($"id - {spaceStorage.Id}");
-            Console.WriteLine($"name - {spaceStorage.IdExhibits}");
+            Console.WriteLine($"id_exhibits - {spaceStorage.IdExhibits}");
             Console.WriteLine($"id_author - {spaceStorage.IdStorage}");
-            Console.WriteLine($"creation_date - {spaceStorage.SpecialConditions}");
+            Console.WriteLine($"special_conditions - {spaceStorage.SpecialConditions}");
             Console.WriteLine();
             Console.ResetColor();
 

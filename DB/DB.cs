@@ -68,12 +68,12 @@ namespace DBConnect
 
         public ExhibitsModel GetExhibits(string name)
         {
-            var sql = $"select * from create table tab_exhibits where exhibit_name = '{name}';";
+            var sql = $"select * from tab_exhibits where exhibit_name = '{name}';";
             var result = SelectQuery(sql);
             result.Read();
 
             var id = result.GetInt32("id");
-            var exhibitsName = result.GetString("exhibits_name");
+            var exhibitsName = result.GetString("exhibit_name");
             var idAuthor = result.GetInt32("id_author");
             var creationDate = result.GetDateTime("creation_date");
             var artDirection = result.GetString("art_direction");
