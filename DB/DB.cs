@@ -56,10 +56,19 @@ namespace DBConnect
             result.Read();
 
             var id = result.GetInt32("id");
-            var authorName = result.GetString("author_name");
-            var birthDate = result.GetDateTime("birth_date");
-            var deathDate = result.GetDateTime("death_date");
-            var birthCountry = result.GetString("birth_country");
+
+            string authorName;
+            if (result.IsDBNull(result.GetOrdinal("author_name"))) authorName = "не заполнено";
+            else if (String.IsNullOrEmpty(result.GetString("author_name"))) authorName = "не заполнено";
+                 else authorName = result.GetString("author_name");
+
+            var birthDate = result.GetDateTime("birth_date").ToString("dd.MM.yyyy");
+            var deathDate = result.GetDateTime("death_date").ToString("dd.MM.yyyy");
+
+            string birthCountry;
+            if (result.IsDBNull(result.GetOrdinal("birth_country"))) birthCountry = "не заполнено";
+            else if (String.IsNullOrEmpty(result.GetString("birth_country"))) birthCountry = "не заполнено";
+                 else birthCountry = result.GetString("birth_country");
 
             Author author = new Author(id, authorName, birthDate, deathDate, birthCountry);
 
@@ -75,13 +84,28 @@ namespace DBConnect
             var id = result.GetInt32("id");
             var exhibitsName = result.GetString("exhibit_name");
             var idAuthor = result.GetInt32("id_author");
-            var creationDate = result.GetDateTime("creation_date");
-            var artDirection = result.GetString("art_direction");
-            var artForm = result.GetString("art_form");
-            var materials = result.GetString("materials");
+
+            string creationDate;
+            if (result.IsDBNull(result.GetOrdinal("creation_date"))) creationDate = "неизвестно";
+            else creationDate = result.GetString("creation_date");
+           
+            string artDirection;
+            if (result.IsDBNull(result.GetOrdinal("art_direction"))) artDirection = "не заполнено";
+            else if (String.IsNullOrEmpty(result.GetString("art_direction"))) artDirection = "не заполнено";
+                 else artDirection = result.GetString("art_direction");
+
+            string artForm;
+            if (result.IsDBNull(result.GetOrdinal("art_form"))) artForm = "не заполнено";
+            else if (String.IsNullOrEmpty(result.GetString("art_form"))) artForm = "не заполнено";
+                 else artForm = result.GetString("art_form");
+                       
+            string materials;            
+            if (result.IsDBNull(result.GetOrdinal("materials"))) materials = "не заполнено";   
+            else if(String.IsNullOrEmpty(result.GetString("materials"))) materials = "не заполнено";
+                 else materials = result.GetString("materials");
 
             ExhibitsModel exhibits = new ExhibitsModel(id, exhibitsName, idAuthor, creationDate,
-           artDirection, artForm, materials);
+                                                        artDirection, artForm, materials);
 
             return exhibits;
         }

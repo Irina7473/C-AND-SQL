@@ -71,7 +71,7 @@ namespace Museum
                 var db = new DB();
                 db.Open();
 
-                var exhibits = db.GetExhibits("Поцелуй");
+                var exhibits = db.GetExhibits("Джоконда");
                 Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.WriteLine($"id - {exhibits.Id}");
                 Console.WriteLine($"exhibits_name - {exhibits.ExhibitsName}");
